@@ -1,10 +1,11 @@
 export function detectTrigger(comment){
+
+
+
     // Check for player stats trigger
     if( comment.body.indexOf('!playerstats') > -1 ) {
         // Cut the comment up into modifiers
         let commandParts = comment.body.split(/\s+/g)
-        console.log('Request for player stats discovered', comment.body, commandParts)
-        //
         return {
             type:        'player',
             data:        {
@@ -18,18 +19,34 @@ export function detectTrigger(comment){
 
 
 
+
+
     // Check for team stats trigger
     if( comment.body.indexOf('!teamstats') > -1 ) {
-        console.log('Request for team stats discovered', comment.body);
         let commandParts = comment.body.split(/\s+/g)
-        console.log(commandParts);
+        return {
+            type: 'team',
+            data: {
+                year: commandParts[1],
+                team: commandParts.slice(2)
+            }
+        }
+
     }
+
+
+
 
     // Check for competition stat trigger
     if( comment.body.indexOf('!compstats') > -1 ) {
-        console.log('Request for competition stats discovered', comment.body);
         let commandParts = comment.body.split(/\s+/g)
-        console.log(commandParts);
+        return {
+            type: 'competition',
+            data: {
+                year: commandParts[1]
+                competition: commandParts.slice(2)
+            }
+        }
     }
 
     return null;

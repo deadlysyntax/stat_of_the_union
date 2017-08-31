@@ -1,5 +1,6 @@
 import { getCompetitionTable } from './scrapers/statbunker/competitionTable'
 import * as lexicon from './libs/lexicon'
+import * as handler from './libs/handler'
 
 // Import configuration
 import dotenv from 'dotenv'
@@ -30,19 +31,24 @@ const commentStream = client.CommentStream({
 // On comment, perform whatever logic you want to do
 commentStream.on('comment', (comment) => {
 
-
     // Process the commands
-    // Returns a data structure if tigger is detected otherwise null
+    // Returns a data structure if trigger is detected otherwise null
     let lexicalData = lexicon.detectTrigger(comment)
-
-    console.log(lexicalData)
-
-    //getCompetitionTable((compiledReply) => {
-    //    comment.reply(compiledReply)
-    //    console.log('commented');
-    //})
-
-
-
-
+    // Get outta here if the things went wrong
+    if( lexicalData === null )
+        return
+    // Pass the lexical data to the handler for that type of stat request
+    switch( lexicalData.type ){
+        case 'player':
+            handler.playerStatHandler(lexicalData, comment)
+            break
+        case 'team':
+            handler.teamStatHandler(lexicalData, comment)
+            break
+        case 'competition':
+            handler.competitionStatHandler(lexicalData, comment)
+            break;
+        default:
+            return
+    }
 });
