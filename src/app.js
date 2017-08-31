@@ -1,4 +1,5 @@
 import { getCompetitionTable } from './scrapers/statbunker/competitionTable'
+import * as lexicon from './libs/lexicon'
 
 // Import configuration
 import dotenv from 'dotenv'
@@ -31,12 +32,16 @@ commentStream.on('comment', (comment) => {
 
 
     // Process the commands
-    if(comment.body === 'rc') {
-        getCompetitionTable((compiledReply) => {
-            comment.reply(compiledReply)
-            console.log('commented');
-        })
-    }
+    // Returns a data structure if tigger is detected otherwise null
+    let lexicalData = lexicon.detectTrigger(comment)
+
+    console.log(lexicalData)
+
+    //getCompetitionTable((compiledReply) => {
+    //    comment.reply(compiledReply)
+    //    console.log('commented');
+    //})
+
 
 
 

@@ -13,8 +13,6 @@ export function getCompetitionTable(callback){
        // Do nothing if there was an issue
        if( error )
             return
-
-
         // Builds a json representation of a csv format file
         // headers are always in row 0
         // the rest of the rows come after
@@ -47,7 +45,7 @@ export function getCompetitionTable(callback){
             data.push(rowData)
         })
 
-        return callback(convertTabularDataToMarkdownTable(data))
+        return callback(convertTabularDataToMarkdownTable(data, caption))
 
     })
 }
