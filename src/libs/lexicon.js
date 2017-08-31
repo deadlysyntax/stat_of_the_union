@@ -43,7 +43,7 @@ export function detectTrigger(comment){
         return {
             type: 'competition',
             data: {
-                year: commandParts[1]
+                year: commandParts[1],
                 competition: commandParts.slice(2)
             }
         }

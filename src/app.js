@@ -13,7 +13,7 @@ import Snoostorm  from 'snoostorm'
 // Initilize client
 const client = new Snoostorm(
     new Snoowrap({
-        userAgent:    'reddit-bot-example-node',
+        userAgent:    'stat_of_the_union',
         clientId:     process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
         username:     process.env.REDDIT_USER,
