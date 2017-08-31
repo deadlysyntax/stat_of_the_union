@@ -1,6 +1,6 @@
 export function playerStatHandler(command, comment){
     console.log('Handling player stat request', command)
-    comment.reply(`Retrieving stats for ${command.data.firstName} ${command.data.lastName} for the year ${command.data.year} ${command.data.competition.join(' ')}`)
+    comment.reply(`Retrieving stats for ${command.data.firstName} ${command.data.lastName} for ${command.data.year} ${command.data.competition.join(' ')}`)
 }
 
 
