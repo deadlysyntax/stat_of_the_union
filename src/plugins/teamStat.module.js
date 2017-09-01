@@ -11,7 +11,7 @@ export function handler(command, comment){
 
 
 export function trigger(comment){
-    comment.body.indexOf('!teamstats') > -1
+    return comment.body.indexOf('!teamstats') > -1
 }
 
 

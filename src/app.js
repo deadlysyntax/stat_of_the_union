@@ -43,16 +43,14 @@ commentStream.on('comment', (comment) => {
     let lexicalData = lexicon.detectTrigger(comment)
 
 
-    console.log(lexicalData);
     // Get outta here if the things went wrong
     if( lexicalData === null )
         return
 
 
-
     // This looks to the handler in libs/handler and if the method is returned from that module
     // it will be called
-    //if( typeof plugins.meta[lexicalData.type].handler === 'function' ){
-    //    plugins.meta[lexicalData.type].handler(lexicalData, comment)
-    //}
+    if( typeof plugins.provider[lexicalData.type].handler === 'function' ){
+        plugins.provider[lexicalData.type].handler(lexicalData, comment)
+    }
 });

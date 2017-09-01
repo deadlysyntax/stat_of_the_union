@@ -15,11 +15,11 @@ export function command(comment){
     let commandParts = comment.body.split(/\s+/g)
 
     // Only respond until the end of the line
-    let lineStrip = commandParts.filter((item) => {
-        item.indexOf('\n') > -1
-    })
+    //let lineStrip = commandParts.filter((item) => {
+    //    item.indexOf('\n') > -1
+    //})
 
-    console.log(lineStrip);
+    //console.log(lineStrip);
 
     return {
         type:        'gameVideo',

@@ -7,12 +7,18 @@ export function detectTrigger(comment){
     // Default to null incase we find nothin
     let lastTriggerDetected = null;
     // Check through our list of plugins
-    plugins.list.map(plugin => {
-        console.log(plugins.meta[plugin], 'here');
+    plugins.list.forEach(plugin => {
+        // Check for existance of plugin
+        if( typeof plugins.provider[plugin] === 'undefined' )
+            console.error('Plugin hasn\'t been set up properly', plugin, plugins);
+        // Check if trigger is set on plugin
+        if( typeof plugins.provider[plugin].trigger === 'undefined' || typeof plugins.provider[plugin].trigger(comment) === 'undefined' )
+            console.error('Plugin trigger hasn\'nt been created proplery', plugin, plugins);
         // If we find a trigger
-        if( typeof plugins.meta[plugin].trigger !== 'undefined' && plugins.meta[plugin].trigger(comment) )
+        if( typeof plugins.provider[plugin].trigger === 'function' && plugins.provider[plugin].trigger(comment) === true ){
             // return the data structure required for the trigger
-            lastTriggerDetected = plugin.meta[plugin].command(comment)
+            lastTriggerDetected = plugins.provider[plugin].command(comment)
+        }
     })
     return lastTriggerDetected
 }

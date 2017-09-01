@@ -1,3 +1,25 @@
+// Takes a list of plugins and references to the methods in the plugin file
+export function preparePlugins(plugins){
+    // Build a blank object to add variable keys to
+    let providers = {}
+    // Add a key -> value pair for each provider class
+    plugins.forEach(plugin => {
+        providers[plugin.name] = plugin.provider
+    })
+    // We want to shape our return method
+    return {
+        // Just return a list of all the names
+        list: plugins.map(plugin => {
+            return plugin.name
+        }),
+        // This provides access to the plugins themselve
+        // it attaches them to a single variable
+        provider: providers
+    }
+}
+
+
+
 
 
 export function convertTabularDataToMarkdownTable(data, caption){
