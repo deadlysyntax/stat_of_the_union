@@ -1,3 +1,9 @@
+export const meta = {
+    type:           'competitionStat',
+    subWhitelist:   ['testingground4bots', 'rugbyunion']
+}
+
+
 export function handler(command, comment){
     console.log('Handling competition stat request', command)
     //getCompetitionTable((compiledReply) => {
@@ -17,8 +23,7 @@ export function trigger(comment){
 export function command(comment){
     let commandParts = comment.body.split(/\s+/g)
     return {
-        type: 'competition',
-        subs: ['testingground4bots', 'rugbyunion'],
+        meta,
         data: {
             year: commandParts[1],
             competition: commandParts.slice(2)
