@@ -32,11 +32,14 @@ export function handler(command, comment){
     //console.log('Handling player stat request', command)
     scrapers.statbunker.doSearch(`${command.data.firstName} ${command.data.lastName}`).then( results => {
         // Dont need to do anything else
-        if( results.length === 0 )
+        if( results.length === 0 ){
+            console.log(`No results from search for ${command.data.firstName} ${command.data.lastName}`)
+            comment.reply(`No results from search for ${command.data.firstName} ${command.data.lastName}. Please check spelling or read here for more info`)
             return
+        }
         // Try to find the player and get their id
         let result      = results[0]
-        let playerID    = result.split('player_id=')[1];
+        let playerID    = result.split('player_id=')[1]
         //
         scrapers.statbunker.getPlayerStats(playerID).then( response => {
             //
@@ -48,13 +51,19 @@ export function handler(command, comment){
             if( typeof stats[0] !== 'undefined' ){
                 tableString = utilities.convertListDataToMarkdownTable(stats[0].data) // use to lowercase to normalize
             } else {
+                console.log('Team not found')
+                comment.reply('Unable to find the team info unfortunately, please check spelling or read here for more info')
                 return
             }
             //
-            if( tableString != null ){
-                console.log('commented');
+            if( tableString !== null && tableString !== '' ){
+                console.log('commented')
                 comment.reply(tableString)
+            } else {
+                console.log('Stats Not found')
+                comment.reply('Unable to find any stats unfortunately, please check spelling or read here for more info')
             }
+
         })
     })
 
