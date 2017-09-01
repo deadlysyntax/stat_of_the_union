@@ -3,6 +3,9 @@ import plugins from '../plugins/manifest'
 // handler will need to process the bot summons
 // Each plugin contains the methods for doing each of these things
 // and we just access those plugins through the plugin manifest
+
+// NOTE only one trigger can be picked up per comment and it will always pick up
+// the last trigger in the comment
 export function detectTrigger(comment){
     // Default to null incase we find nothin
     let lastTriggerDetected = null;

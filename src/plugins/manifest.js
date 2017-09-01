@@ -2,10 +2,10 @@ import * as utilities from '../libs/utilities'
 
 
 // Import our plugin modules
-import * as playerStat      from  '../plugins/playerStat.module'
-import * as teamStat        from  '../plugins/teamStat.module'
-import * as competitionStat from  '../plugins/competitionStat.module'
-import * as gameVideo       from  '../plugins/gameVideo.module'
+import * as playerStat      from  './modules/playerStat.module'
+import * as teamStat        from  './modules/teamStat.module'
+import * as competitionStat from  './modules/competitionStat.module'
+import * as gameVideo       from  './modules/gameVideo.module'
 
 
 // Register handlers here
