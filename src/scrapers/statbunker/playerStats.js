@@ -22,15 +22,15 @@ export function get(playerID) {
             // Build the data structure
             $('.breadcrumb').find('li')
                 .map( ( row, rowObject ) => {
-                    teams.push($(rowObject).find('a').attr('id').toLowerCase().replace('_', ' '))
+                    teams.push($(rowObject).find('a').attr('id'))
                 })
             //
             let results = teams.map( team => {
-                    return {
-                        type: team,
-                        data: convertTableHtmlToArray( $, `table.${team}` )
-                    }
-                })
+                return {
+                    type: team.toLowerCase().replace('_', ' '),
+                    data: convertTableHtmlToArray( $, `table.${team}` )
+                }
+            })
             // Done
             resolve(results)
         });

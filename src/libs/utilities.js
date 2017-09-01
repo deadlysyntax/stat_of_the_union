@@ -57,11 +57,17 @@ export function convertTabularDataToMarkdownTable(data, caption){
 
 
 export function convertListDataToMarkdownTable(data, caption){
-    let string = ''
+    let commentString = ''
 
-    data.data.forEach( stat => {
-        console.log(stat);
+    if( typeof data === 'undefined' || data.length < 1 )
+        return null
+
+    commentString += 'Stat | Total\n'
+    commentString += '-|-\n'
+
+    data.forEach( stat => {
+        commentString += `${stat.key} | ${stat.value}\n`
     })
 
-    return string
+    return commentString
 }

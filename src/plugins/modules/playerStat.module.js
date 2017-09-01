@@ -1,4 +1,4 @@
-import utilities from '../../libs/utilities'
+import * as utilities from '../../libs/utilities'
 import scrapers from '../../scrapers/manifest'
 
 // Basic module information
@@ -35,17 +35,26 @@ export function handler(command, comment){
         if( results.length === 0 )
             return
         // Try to find the player and get their id
-        let result   = results[0]
-        let playerID = result.split('player_id=')[1];
+        let result      = results[0]
+        let playerID    = result.split('player_id=')[1];
         //
         scrapers.statbunker.getPlayerStats(playerID).then( response => {
             //
-            if( typeof response[command.data.team.toLowerCase()] !== 'undefined' )
-                let tableString = utilities.convertListDataToMarkdownTable(response[command.data.team.toLowerCase()]) // use to lowercase to normalize
-            else
+            let tableString = ''
+            //console.log(command.data.team.join(' ').toLowerCase(), response);
+            let stats = response.filter(team => {
+                return team.type === command.data.team.join(' ').toLowerCase()
+            })
+            if( typeof stats[0] !== 'undefined' ){
+                tableString = utilities.convertListDataToMarkdownTable(stats[0].data) // use to lowercase to normalize
+            } else {
                 return
+            }
             //
-            console.log(tableString);
+            if( tableString != null ){
+                console.log('commented');
+                comment.reply(tableString)
+            }
         })
     })
 
