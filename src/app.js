@@ -7,7 +7,9 @@ import plugins from './plugins/manifest'
 import dotenv from 'dotenv'
 dotenv.config({ silent: process.env.NODE_ENV === 'production' })
 
-
+// Parse any CLI arguments
+import parseArgs from 'minimist'
+const args = parseArgs(process.argv);
 
 
 // These libraries are for reddit interaction
@@ -25,12 +27,12 @@ const client = new Snoostorm(
 )
 
 
-
-
 // Create a Snoostorm CommentStream with the specified options
+let sub = args.sub || 'testingground4bots'
+
 const commentStream = client.CommentStream({
-    subreddit: 'testingground4bots',
-    results:    25
+    subreddit: sub,
+    results:   25
 });
 
 
@@ -41,16 +43,18 @@ commentStream.on('comment', (comment) => {
     // Process the commands
     // Returns a data structure if trigger is detected otherwise null
     let lexicalData = lexicon.detectTrigger(comment)
-
-
     // Get outta here if the things went wrong
     if( lexicalData === null )
         return
-
-
+    // Check if this sub is in the whitelist for the plugin,
+    // plugins have to specify which subs they work in
+    if( lexicalData.meta.subWhitelist.indexOf(sub) < 0 ){
+        console.log('Command can\'t be run in this sub', sub, lexicalData )
+        return
+    }
     // This looks to the handler in libs/handler and if the method is returned from that module
     // it will be called
-    if( typeof plugins.provider[lexicalData.type].handler === 'function' ){
-        plugins.provider[lexicalData.type].handler(lexicalData, comment)
+    if( typeof plugins.provider[lexicalData.meta.type].handler === 'function' ){
+        plugins.provider[lexicalData.meta.type].handler(lexicalData, comment)
     }
 });

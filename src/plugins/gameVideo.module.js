@@ -1,3 +1,10 @@
+export const meta = {
+    type:           'gameVideo',
+    subWhitelist:   ['testingground4bots', 'rugbyunion']
+}
+
+
+
 export function handler(command, comment){
     console.log('Handling game mention', command)
     //getCompetitionTable((compiledReply) => {
@@ -22,8 +29,8 @@ export function command(comment){
     //console.log(lineStrip);
 
     return {
-        type:        'gameVideo',
-        data:        {
+        meta,
+        data:     {
             parts: commandParts
         }
     }

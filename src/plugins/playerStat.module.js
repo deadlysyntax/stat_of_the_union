@@ -16,8 +16,9 @@ export function command(comment){
     // Cut the comment up into modifiers
     let commandParts = comment.body.split(/\s+/g)
     return {
-        type:        'player',
-        data:        {
+        type:      'player',
+        subs:      ['testingground4bots', 'rugbyunion'],
+        data:      {
             'firstName':   commandParts[1],
             'lastName':    commandParts[2],
             'year':        commandParts[3],

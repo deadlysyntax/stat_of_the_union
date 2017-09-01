@@ -21,8 +21,9 @@ export function trigger(comment){
 export function command(comment){
     let commandParts = comment.body.split(/\s+/g)
     return {
-        type: 'team',
-        data: {
+        type:   'team',
+        'subs': ['testingground4bots', 'rugbyunion'],
+        data:   {
             year: commandParts[1],
             team: commandParts.slice(2)
         }
