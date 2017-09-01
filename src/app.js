@@ -46,6 +46,11 @@ commentStream.on('comment', (comment) => {
     // Get outta here if the things went wrong
     if( lexicalData === null )
         return
+    // See if module was set up correctly
+    if( typeof lexicalData.meta.subWhitelist === 'undefined' ){
+        console.error('Sub whitelist hasn\'t been set up properly in module')
+        return
+    }
     // Check if this sub is in the whitelist for the plugin,
     // plugins have to specify which subs they work in
     if( lexicalData.meta.subWhitelist.indexOf(sub) < 0 ){

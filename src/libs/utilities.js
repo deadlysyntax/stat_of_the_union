@@ -52,6 +52,16 @@ export function convertTabularDataToMarkdownTable(data, caption){
         // Add the row to the comment
         commentString += rowString
     })
-
     return commentString
+}
+
+
+export function convertListDataToMarkdownTable(data, caption){
+    let string = ''
+
+    data.data.forEach( stat => {
+        console.log(stat);
+    })
+
+    return string
 }

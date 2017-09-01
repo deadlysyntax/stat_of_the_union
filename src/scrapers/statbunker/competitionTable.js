@@ -4,7 +4,7 @@ import cheerio from 'cheerio'
 import { convertTabularDataToMarkdownTable } from '../../libs/utilities.js'
 
 
-export function getCompetitionTable(callback){
+export function get(callback){
     // Process the url based on commands
     let url = 'https://rugby.statbunker.com/competitions/LeagueTable?comp_id=528';
 
