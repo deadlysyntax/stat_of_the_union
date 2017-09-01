@@ -49,7 +49,7 @@ export function handler(command, comment){
                 return team.type === command.data.team.join(' ').toLowerCase()
             })
             if( typeof stats[0] !== 'undefined' ){
-                tableString = utilities.convertListDataToMarkdownTable(stats[0].data) // use to lowercase to normalize
+                tableString = utilities.convertListDataToMarkdownTable(stats[0].data, `${utilities.capitalize(command.data.firstName+' '+command.data.lastName)} | ${utilities.capitalize(stats[0].type) }`) // use to lowercase to normalize
             } else {
                 console.log('Team not found')
                 comment.reply('Unable to find the team info unfortunately, please check spelling or read here for more info')

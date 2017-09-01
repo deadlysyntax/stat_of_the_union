@@ -21,6 +21,12 @@ export function preparePlugins(plugins){
 
 
 
+export function capitalize(string){
+    return string.replace(/(^|\s)[a-z]/g,function(f){return f.toUpperCase()})
+}
+
+
+
 
 export function convertTabularDataToMarkdownTable(data, caption){
     // Convert the table data into reddit markdown
@@ -56,11 +62,19 @@ export function convertTabularDataToMarkdownTable(data, caption){
 }
 
 
+
+
+
+
+
 export function convertListDataToMarkdownTable(data, caption){
     let commentString = ''
 
     if( typeof data === 'undefined' || data.length < 1 )
         return null
+
+    if( caption )
+        commentString += `${caption}\n\n`
 
     commentString += 'Stat | Total\n'
     commentString += '-|-\n'
