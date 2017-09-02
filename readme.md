@@ -25,7 +25,7 @@ Behind stat_of_the_union is an es6 nodejs-based framework that makes it relative
 The framework provides a plugin system so that each bot is defined in a single file and the framework provides common functionality to all bots that are plugged in to the system, including inbuilt functionality for scraping and common utilities such as formatting data into reddit tables which all bot plugins have common access to.
 
 ### Would you like to contribute?
-If you're interested in contributing to these /r/rugbyunion bots, private message https://www.reddit.com/user/stat_of_the_union. I can guide you through everything and build up the documentation as I go. Contributions can be made via pull-requests, all deployments need to be done at the central server.
+If you're interested in contributing to these /r/rugbyunion bots, private message https://www.reddit.com/user/stat_of_the_union. I can guide you through everything and build up the documentation as I go. Contributions can be made via pull-requests, but all deployments need to be done by me at the central server.
 
 If you're interested in building your own bots and using or contributing to the development of this framework, private message https://www.reddit.com/user/stat_of_the_union explaining you'd like to tinker yourself. I'll help get you started and we can discuss the direction of the framework. Or feel free to fork. It would be cool to collaborate though.
 
