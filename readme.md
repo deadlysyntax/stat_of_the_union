@@ -1,6 +1,6 @@
 # Stat of the Union
 ### /r/rugbyunion statistics bot
-StatOfTheUnion is a reddit bot aimed at the /r/rugbyunion community to provide informative bots that respond to specific commands within a comment.
+stat_of_the_union is a reddit bot aimed at the /r/rugbyunion community to provide informative bots that respond to specific commands within a comment.
 
 #### Player Stats
 Add this line to your reddit comment:
