@@ -37,5 +37,8 @@
     "request": "^2.81.0",
     "snoostorm": "0.0.5",
     "snoowrap": "^1.14.2"
+  },
+  "engines": {
+    "node": "7.6.0"
   }
 }
