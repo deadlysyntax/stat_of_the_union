@@ -3,7 +3,7 @@
 StatOfTheUnion is a reddit bot aimed at the /r/rugbyunion community to provide informative bots that respond to specific commands within a comment.
 
 #### Player Stats
-Add this line to your comment:
+Add this line to your reddit comment:
 
 ```
 !playerstats Jonah Lomu New Zealand
