@@ -1,6 +1,6 @@
 export const meta = {
     type:           'teamStats',
-    'subWhitelist': ['testingground4bots', 'rugbyunion'],
+    'subWhitelist': ['testingground4bots'],
 }
 
 

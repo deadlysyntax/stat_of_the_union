@@ -1,6 +1,6 @@
 export const meta = {
     type:           'gameVideo',
-    subWhitelist:   ['testingground4bots', 'rugbyunion']
+    subWhitelist:   ['testingground4bots']
 }
 
 

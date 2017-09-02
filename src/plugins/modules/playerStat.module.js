@@ -16,12 +16,14 @@ export function trigger(comment){
 export function command(comment){
     // Cut the comment up into modifiers
     let commandParts = comment.body.split(/\s+/g)
+    // Find where our command starts
+    commandIndex     = comment.body.indexOf('!playerstats')
     return {
         meta,
         data:      {
-            'firstName':   commandParts[1],
-            'lastName':    commandParts[2],
-            'team':        commandParts.slice(3)
+            'firstName':   commandParts[commandIndex+1],
+            'lastName':    commandParts[commandIndex+2],
+            'team':        commandParts.slice(commandIndex+3)
         }
     }
 }
