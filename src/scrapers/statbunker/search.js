@@ -27,5 +27,4 @@ export function doSearch(term) {
             resolve(results)
         });
     });
-
 }
