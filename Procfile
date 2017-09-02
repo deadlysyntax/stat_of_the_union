@@ -1,1 +1,1 @@
-worker: node dist/index.js --sub=rugbyunion
+worker: node dist/app.js --sub=rugbyunion
