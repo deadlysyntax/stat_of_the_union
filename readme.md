@@ -249,3 +249,6 @@ scrapers.statSource.nameOfMethodAvaliableToPlugin( data ).then( response => {
 ```
 
 This data can then be used by our handler to in it's process of formulating a reply.
+
+### Contributions
+I am looking for people to help develop delightful, useful and creative bots and to also help develop this framework as project. Please private message https://www.reddit.com/user/stat_of_the_union if you would like to have a yarn about either of those two things.
