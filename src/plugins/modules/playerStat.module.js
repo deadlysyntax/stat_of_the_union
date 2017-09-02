@@ -17,7 +17,10 @@ export function command(comment){
     // Cut the comment up into modifiers
     let commandParts = comment.body.split(/\s+/g)
     // Find where our command starts
-    let commandIndex = comment.body.indexOf('!playerstats')
+    let commandIndex = commandParts.indexOf('!playerstats')
+
+    console.log(commandIndex, commandParts);
+
     return {
         meta,
         data:      {
