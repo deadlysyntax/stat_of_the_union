@@ -53,13 +53,6 @@ export function convertTableHtmlToArray($, tableClass) {
     //console.log($(tableClass).length);
     tableClass = tableClass.replace('(', '\\(').replace(')', '\\)')
 
-    console.log(tableClass);
-
-    //if( $(tableClass+' tr').length === 0 ) ){
-    //    console.log('No table')
-    //    return data
-    //}
-    //
     $(tableClass).find('tr').map( ( row, rowObject ) => {
         // There's two columns in each data row
         let columnOne = $(rowObject).find('th').first()

@@ -15,7 +15,7 @@ export function trigger(comment){
 // Breaks the comment down into all the data the handler will need to do it's job
 export function command(comment){
     // Cut the comment up into modifiers
-    let commandParts = comment.body.split(/\s+/g)
+    let commandParts = comment.body.trim().split(/\s+/g)
     // Find where our command starts
     let commandIndex = commandParts.indexOf('!playerstats')
 
