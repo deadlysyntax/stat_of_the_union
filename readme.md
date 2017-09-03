@@ -18,8 +18,13 @@ You can get stats for any team that person was a part of:
 ```
 The first two words after `!playerstats` must be the first and last names of the player. Followed by the name of the team. It's pretty unforgiving at the moment, but I'm working on making it so that slight mistakes still get you the right results.
 
+
 #### Issues
 Please let me know about any issues, ideas or requests you have by logging a new comment here https://github.com/deadlysyntax/stat_of_the_union/issues
+
+******
+# ! Stop reading here if you're not a nerd
+******
 
 # Bot Management Framwework
 Behind stat_of_the_union is an es6 nodejs-based framework that makes it relatively easy to create and run multiple bots that respond to many different types of commands. In creating stat_of_the_union I decided to abstract all common bot-building functionality into a system where bots could easily be 'plugged-in' without have to rewrite a lot of the boilerplate bot code.

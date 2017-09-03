@@ -39,7 +39,7 @@ export function handler(command, comment){
         // Dont need to do anything else
         if( results.length === 0 ){
             console.log(`No results from search for ${command.data.firstName} ${command.data.lastName}`)
-            comment.reply(`No results from search for ${command.data.firstName} ${command.data.lastName}. Please check spelling or read here for more info`)
+            comment.reply(`No results from search for ${command.data.firstName} ${command.data.lastName}. Please check spelling or [read here](https://github.com/deadlysyntax/stat_of_the_union) for more info`)
             return
         }
         // Try to find the player and get their id
@@ -54,19 +54,19 @@ export function handler(command, comment){
                 return team.type === command.data.team.join(' ').toLowerCase()
             })
             if( typeof stats[0] !== 'undefined' ){
-                tableString = utilities.convertListDataToMarkdownTable(stats[0].data, `${utilities.capitalize(command.data.firstName+' '+command.data.lastName)} | ${utilities.capitalize(stats[0].type) }`) // use to lowercase to normalize
+                tableString  = utilities.convertListDataToMarkdownTable(stats[0].data, `${utilities.capitalize(command.data.firstName+' '+command.data.lastName)} | ${utilities.capitalize(stats[0].type) }`) // use to lowercase to normalize
             } else {
                 console.log('Team not found')
-                comment.reply('Unable to find the team info unfortunately, please check spelling or read here for more info')
+                comment.reply('Unable to find the team info unfortunately, please check spelling or [read here](https://github.com/deadlysyntax/stat_of_the_union) for more info')
                 return
             }
-            //
+            // Success
             if( tableString !== null && tableString !== '' ){
                 console.log('commented')
-                comment.reply(tableString)
+                comment.reply(tableString+ '\n ****** \n Please PM me with ideas, feedback, bot suggestions, qualms or just a bloody good story.')
             } else {
                 console.log('Stats Not found')
-                comment.reply('Unable to find any stats unfortunately, please check spelling or read here for more info')
+                comment.reply('Unable to find any stats unfortunately, please check spelling or [read here](https://github.com/deadlysyntax/stat_of_the_union) for more info')
             }
 
         })
