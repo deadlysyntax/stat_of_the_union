@@ -25,6 +25,7 @@ export function get(playerID) {
                     .map( ( row, rowObject ) => {
                         teams.push($(rowObject).find('a').attr('id'))
                     })
+
                 //
                 let results = teams.map( team => {
                     return {
@@ -48,6 +49,16 @@ export function get(playerID) {
 // expects a cherrio object
 export function convertTableHtmlToArray($, tableClass) {
     let data    = []
+
+    //console.log($(tableClass).length);
+    tableClass = tableClass.replace('(', '\\(').replace(')', '\\)')
+
+    console.log(tableClass);
+
+    //if( $(tableClass+' tr').length === 0 ) ){
+    //    console.log('No table')
+    //    return data
+    //}
     //
     $(tableClass).find('tr').map( ( row, rowObject ) => {
         // There's two columns in each data row
