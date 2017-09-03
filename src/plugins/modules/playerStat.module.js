@@ -69,7 +69,11 @@ export function handler(command, comment){
                 comment.reply('Unable to find any stats unfortunately, please check spelling or [read here](https://github.com/deadlysyntax/stat_of_the_union) for more info')
             }
 
+        }).catch((error) => {
+            console.log(error);
         })
+    }).catch((error) => {
+        console.log(error);
     })
 
 
