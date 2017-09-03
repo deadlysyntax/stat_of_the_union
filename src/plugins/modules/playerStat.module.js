@@ -70,9 +70,11 @@ export function handler(command, comment){
             }
 
         }).catch((error) => {
+            comment.reply('Unable to find any stats unfortunately, this is my problem and I\'ve told my human to sort it out.')
             console.log(error);
         })
     }).catch((error) => {
+        comment.reply('Unable to find any stats unfortunately, this is my problem and I\'ve told my human to sort it out.')
         console.log(error);
     })
 
