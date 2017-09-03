@@ -23,7 +23,7 @@ The first two words after `!playerstats` must be the first and last names of the
 Please let me know about any issues, ideas or requests you have by logging a new comment here https://github.com/deadlysyntax/stat_of_the_union/issues
 
 ******
-# ! Stop reading here if you're not a nerd
+# ! Stop reading here unless you're a nerd
 ******
 
 # Bot Management Framwework
