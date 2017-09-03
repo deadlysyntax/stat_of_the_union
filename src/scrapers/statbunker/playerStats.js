@@ -32,12 +32,12 @@ export function get(playerID) {
                         data: convertTableHtmlToArray( $, `table.${team}` )
                     }
                 })
+                // Done
+                resolve(results)
             }
             catch(e){
                 reject('Trouble with the page HTML selectors', e)
             }
-            // Done
-            resolve(results)
         });
     });
 }
