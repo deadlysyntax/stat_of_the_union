@@ -16,7 +16,7 @@ You can get stats for any team that person was a part of:
 ```
 !playerstats Beauden Barrett Hurricanes
 ```
-The first two words after `!playerstats` must be the first and last names of the player. Followed by the name of the team. It's pretty unforgiving at the moment, but I'm working on making it so that slight mistakes still get you the right results.
+The first two words after `!playerstats` must be the first and last names of the player. Followed by the name of the team. It's pretty unforgiving at the moment, for example Richie McCaw wouldn't work but Richard McCaw does. I'm working hard making it so that slight mistakes still get you the right results, but it's a work in progress.
 
 
 #### Issues
