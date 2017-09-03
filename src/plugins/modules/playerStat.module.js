@@ -57,7 +57,7 @@ export function handler(command, comment){
                 tableString  = utilities.convertListDataToMarkdownTable(stats[0].data, `${utilities.capitalize(command.data.firstName+' '+command.data.lastName)} | ${utilities.capitalize(stats[0].type) }`) // use to lowercase to normalize
             } else {
                 console.log('Team not found')
-                comment.reply('Unable to find the team info unfortunately, please check spelling or [read here](https://github.com/deadlysyntax/stat_of_the_union) for more info')
+                comment.reply(`Unable to find stats for ${utilities.capitalize(command.data.firstName+' '+command.data.lastName)} at this team unfortunately, please check spelling or [read here](https://github.com/deadlysyntax/stat_of_the_union) for more info`)
                 return
             }
             // Success
