@@ -19,18 +19,23 @@ export function get(playerID) {
             let $       = cheerio.load(html)
             //
             let teams = []
-            // Build the data structure
-            $('.breadcrumb').find('li')
-                .map( ( row, rowObject ) => {
-                    teams.push($(rowObject).find('a').attr('id'))
+            try {
+                // Build the data structure
+                $('.breadcrumb').find('li')
+                    .map( ( row, rowObject ) => {
+                        teams.push($(rowObject).find('a').attr('id'))
+                    })
+                //
+                let results = teams.map( team => {
+                    return {
+                        type: team.toLowerCase().replace('_', ' '),
+                        data: convertTableHtmlToArray( $, `table.${team}` )
+                    }
                 })
-            //
-            let results = teams.map( team => {
-                return {
-                    type: team.toLowerCase().replace('_', ' '),
-                    data: convertTableHtmlToArray( $, `table.${team}` )
-                }
-            })
+            }
+            catch(e){
+                reject('Trouble with the page HTML selectors', e)
+            }
             // Done
             resolve(results)
         });
