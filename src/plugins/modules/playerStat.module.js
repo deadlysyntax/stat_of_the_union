@@ -3,33 +3,49 @@ import scrapers from '../../scrapers/manifest'
 
 // Basic module information
 export const meta = {
-    type:         'playerStat',
-    subWhitelist: ['testingground4bots', 'rugbyunion']
+    type:          'playerStat',
+    subWhitelist:  ['testingground4bots', 'rugbyunion'],
+    commandString: "!playerstats"
 }
 
 // Used to determine if this module has been summond by the reddit comment
 export function trigger(comment){
-    return  comment.body.indexOf('!playerstats') > -1
+    return  comment.body.indexOf(meta.commandString) > -1
 }
 
 // Breaks the comment down into all the data the handler will need to do it's job
 export function command(comment){
-    // Cut the comment up into modifiers
-    let commandParts = comment.body.trim().split(/\s+/g)
-    // Find where our command starts
-    let commandIndex = commandParts.indexOf('!playerstats')
+    // Split the comment into line, the command can only occur once per message
+    // and must be on it's own line
+    let lines        = comment.body.split(/\r?\n/)
+    if( lines.length === 0 )
+        return null
 
-    console.log(commandIndex, commandParts);
+    let line = lines.filter( line => {
+        return line.indexOf(meta.commandString) > -1
+    })[0]
+
+    if( line.length === 0 )
+        return null
+
+    // Split on the comma
+    let vars = line.split(',')
+
+    if( vars.length < 2 )
+        return null
 
     return {
         meta,
-        data:      {
-            'firstName':   commandParts[commandIndex+1],
-            'lastName':    commandParts[commandIndex+2],
-            'team':        commandParts.slice(commandIndex+3)
+        data: {
+            name: vars[0].replace(meta.commandString, '').trim(),
+            team: vars[1].trim()
         }
     }
+
 }
+
+
+
 
 
 // The action taken if the module is triggered
