@@ -85,3 +85,33 @@ export function convertListDataToMarkdownTable(data, caption){
 
     return commentString
 }
+
+
+
+
+
+
+export function processCommandIntoVariablesByComma(comment, commandString){
+    // Split the comment into line, the command can only occur once per message
+    // and must be on it's own line
+    let lines        = comment.body.split(/\r?\n/)
+    if( lines.length === 0 )
+        return null
+    //
+    let line = lines.filter( line => {
+        return line.indexOf(commandString) > -1
+    })[0]
+    //
+    if( line.length === 0 )
+        return null
+    // Split on the comma
+    let vars = line.split(',')
+    //
+    if( vars.length < 2 )
+        return null
+    // Remove any unwanted characters
+    vars = vars.map( variable => {
+        return variable.replace(commandString, '').trim()
+    })
+    return vars
+}

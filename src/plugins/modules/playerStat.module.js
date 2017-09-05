@@ -15,30 +15,14 @@ export function trigger(comment){
 
 // Breaks the comment down into all the data the handler will need to do it's job
 export function command(comment){
-    // Split the comment into line, the command can only occur once per message
-    // and must be on it's own line
-    let lines        = comment.body.split(/\r?\n/)
-    if( lines.length === 0 )
-        return null
 
-    let line = lines.filter( line => {
-        return line.indexOf(meta.commandString) > -1
-    })[0]
-
-    if( line.length === 0 )
-        return null
-
-    // Split on the comma
-    let vars = line.split(',')
-
-    if( vars.length < 2 )
-        return null
+    let vars = utilities.processCommandIntoVariablesByComma(comment, meta.commandString)
 
     return {
         meta,
         data: {
-            name: vars[0].replace(meta.commandString, '').trim(),
-            team: vars[1].trim()
+            name: vars[0]
+            team: vars[1]
         }
     }
 
