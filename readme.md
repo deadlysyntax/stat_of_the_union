@@ -6,7 +6,7 @@ stat_of_the_union is a reddit bot aimed at the /r/rugbyunion community to provid
 Add this line to your reddit comment:
 
 ```
-!playerstats Jonah Lomu New Zealand
+!playerstats Jonah Lomu, New Zealand
 ```
 
 And stat_of_the_union will comment below your summoning comment with a list of stats for Jonah Lomu's matches with the All Blacks.
@@ -14,16 +14,16 @@ And stat_of_the_union will comment below your summoning comment with a list of s
 You can get stats for any team that person was a part of:
 
 ```
-!playerstats Beauden Barrett Hurricanes
+!playerstats Beauden Barrett, Hurricanes
 ```
 
 You can also get all-time stats for a player
 ```
-!playerstats Daniel Carter all time
+!playerstats Daniel Carter, all time
 ```
 Which will show stats from their entire professional career.
 
-The first two words after `!playerstats` must be the first and last names of the player. Followed by the name of the team. It's pretty unforgiving at the moment, for example Richie McCaw wouldn't work but Richard McCaw does. I'm working hard making it so that slight mistakes still get you the right results, but it's a work in progress.
+The first words after `!playerstats` must be the formal name of the player, then a comma, followed by the name of the team. For example Richie McCaw wouldn't work but Richard McCaw does. Player name and team name must be separated by a comma.
 
 #### Issues
 Please let me know about any issues, ideas or requests you have by logging a new comment here https://github.com/deadlysyntax/stat_of_the_union/issues
