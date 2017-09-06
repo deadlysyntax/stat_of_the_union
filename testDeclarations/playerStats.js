@@ -1,4 +1,7 @@
 import * as lexicon from '../dist/libs/lexicon'
+import { handler } from '../dist/plugins/modules/playerStat.module'
+
+
 import chai from 'chai'
 
 describe('Lexicon', () => {
@@ -15,6 +18,23 @@ describe('Lexicon', () => {
             body: "!playerstats Jonah Lomu New Zealand"
         })
         chai.assert.isNull(response)
+    })
+
+
+
+
+    it('should handle single word teams', () => {
+
+        let response = lexicon.detectTrigger({
+            body: "!playerstats Simon Shaw, England"
+        })
+        chai.assert.deepEqual(
+        {
+            'name':  "Simon Shaw",
+            'team':  "England"
+        },
+            response.data
+        )
     })
 
 
@@ -50,6 +70,24 @@ describe('Lexicon', () => {
         {
             'name':  "Jonah Lomu",
             'team':  "New Zealand"
+        },
+            response.data
+        )
+    })
+
+
+
+
+    it('should fail if command isnt on one line', () => {
+
+        let response = lexicon.detectTrigger({
+            body: "first I was afraid, I was pertified \n !playerstats Jonah Lomu, New Zealand hey now hey now"
+        })
+
+        chai.assert.deepEqual(
+        {
+            'name':  "Jonah Lomu",
+            'team':  "New Zealand hey now hey now"
         },
             response.data
         )

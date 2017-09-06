@@ -28,7 +28,8 @@
     "chai": "^4.1.2",
     "mocha": "^3.5.0",
     "nodemon": "^1.11.0",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "rxjs": "^5.4.3"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",

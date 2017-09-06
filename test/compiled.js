@@ -4,6 +4,8 @@ var _lexicon = require('../dist/libs/lexicon');
 
 var lexicon = _interopRequireWildcard(_lexicon);
 
+var _playerStat = require('../dist/plugins/modules/playerStat.module');
+
 var _chai = require('chai');
 
 var _chai2 = _interopRequireDefault(_chai);
@@ -22,6 +24,17 @@ describe('Lexicon', function () {
                 body: "!playerstats Jonah Lomu New Zealand"
             });
             _chai2.default.assert.isNull(response);
+        });
+
+        it('should handle single word teams', function () {
+
+            var response = lexicon.detectTrigger({
+                body: "!playerstats Simon Shaw, England"
+            });
+            _chai2.default.assert.deepEqual({
+                'name': "Simon Shaw",
+                'team': "England"
+            }, response.data);
         });
 
         it('should seperate variables by comma', function () {
@@ -45,6 +58,18 @@ describe('Lexicon', function () {
             _chai2.default.assert.deepEqual({
                 'name': "Jonah Lomu",
                 'team': "New Zealand"
+            }, response.data);
+        });
+
+        it('should fail if command isnt on one line', function () {
+
+            var response = lexicon.detectTrigger({
+                body: "first I was afraid, I was pertified \n !playerstats Jonah Lomu, New Zealand hey now hey now"
+            });
+
+            _chai2.default.assert.deepEqual({
+                'name': "Jonah Lomu",
+                'team': "New Zealand hey now hey now"
             }, response.data);
         });
 

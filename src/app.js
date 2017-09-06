@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Observable';
+
 import * as lexicon from './libs/lexicon'
 import plugins from './plugins/manifest'
 
@@ -9,7 +11,9 @@ dotenv.config({ silent: process.env.NODE_ENV === 'production' })
 
 // Parse any CLI arguments
 import parseArgs from 'minimist'
-const args = parseArgs(process.argv);
+const args = parseArgs(process.argv)
+
+console.log('Starting');
 
 
 // These libraries are for reddit interaction
@@ -33,7 +37,7 @@ let sub = args.sub || 'testingground4bots'
 const commentStream = client.CommentStream({
     subreddit: sub,
     results:   25
-});
+})
 
 
 
@@ -59,7 +63,16 @@ commentStream.on('comment', (comment) => {
     }
     // This looks to the handler in libs/handler and if the method is returned from that module
     // it will be called
-    if( typeof plugins.provider[lexicalData.meta.type].handler === 'function' ){
-        plugins.provider[lexicalData.meta.type].handler(lexicalData, comment)
+    if( typeof plugins.provider[lexicalData.meta.type].handler !== 'function' ){
+        console.log('Handler hasn\'t been set up', sub, lexicalData )
+        return
     }
-});
+
+
+    // Run the handler, the handler returns instructions on what to do next
+    plugins.provider[lexicalData.meta.type].handler(lexicalData, comment).subscribe( result => {
+        console.log('Commenting');
+        if( result !== null && typeof result.message !== 'undefined' && result.message !== '')
+            comment.reply(result.message)
+    })
+})
