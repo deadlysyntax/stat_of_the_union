@@ -38,7 +38,7 @@ export function command(comment){
 
 
 // The action taken if the module is triggered
-export function handler(command, comment, callback){
+export function handler(command, comment){
 
 
     return Observable.create( observer => {

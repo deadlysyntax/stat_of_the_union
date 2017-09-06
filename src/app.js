@@ -69,7 +69,7 @@ commentStream.on('comment', (comment) => {
     }
 
 
-    // Run the handler, the handler returns instructions on what to do next
+    // Run the handler, the handler returns instructions on what to do next, expects an observable
     plugins.provider[lexicalData.meta.type].handler(lexicalData, comment).subscribe( result => {
         console.log('Commenting');
         if( result !== null && typeof result.message !== 'undefined' && result.message !== '')

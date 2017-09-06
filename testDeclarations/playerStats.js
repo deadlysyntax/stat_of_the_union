@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import * as lexicon from '../dist/libs/lexicon'
 import { handler } from '../dist/plugins/modules/playerStat.module'
 
@@ -107,6 +108,21 @@ describe('Lexicon', () => {
         chai.assert.isNull(response)
     })
 
+
+    it('should return an observable', () => {
+
+        let command = lexicon.detectTrigger({
+            body: "!playerstats Dan Carter, New Zealand"
+        })
+
+        handler(command, {
+            body: "!playerstats Dan Carter, New Zealand"
+        }).subscribe( result => {
+            console.log(result);
+            //chai.assert.
+        })
+        
+    })
 
 
 

@@ -1,5 +1,7 @@
 'use strict';
 
+var _Observable = require('rxjs/Observable');
+
 var _lexicon = require('../dist/libs/lexicon');
 
 var lexicon = _interopRequireWildcard(_lexicon);
@@ -80,6 +82,20 @@ describe('Lexicon', function () {
             });
 
             _chai2.default.assert.isNull(response);
+        });
+
+        it('should return an observable', function () {
+
+            var command = lexicon.detectTrigger({
+                body: "!playerstats Dan Carter, New Zealand"
+            });
+
+            (0, _playerStat.handler)(command, {
+                body: "!playerstats Dan Carter, New Zealand"
+            }).subscribe(function (result) {
+                console.log(result);
+                //chai.assert.
+            });
         });
     });
 });
